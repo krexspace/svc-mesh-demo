@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: goapp-deployment
+  labels:
+    app: goapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: goapp
+  template:
+    metadata:
+      labels:
+        app: goapp
+    spec:
+      containers:
+      - name: goapp1
+        image: goapp1:1.0.1
+        ports:
+        - containerPort: 8090
+      - name: goapp2
+        image: goapp2:1.0.1
+        ports:
+        - containerPort: 7090
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: goapp-service
+spec:
+  selector:
+    app: goapp
+  ports:
+    - protocol: TCP
+      port: 27070
+      targetPort: 27070
+
+
+
