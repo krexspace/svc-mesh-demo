@@ -1,2 +1,2 @@
-#!/bin/bash
-docker run -d --name envoy-side-car -p 22020:22020 -p 9901:9901 envoy:v1
+docker stop envoysc
+docker run -d --rm --name envoysc -p 8000:8000 -p 8081:8081 envoy:v1

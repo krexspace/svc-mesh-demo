@@ -22,7 +22,7 @@ select fav in "${foods[@]}"; do
             ;;
         "cleanup rancher")
                 echo "Running cleanup script."
-                sudo source cleanup-rancher.sh
+                source cleanup-rancher.sh
                 break
             ;;
         "zero state")
@@ -34,11 +34,13 @@ select fav in "${foods[@]}"; do
                 sudo docker system prune -a
                 break
             ;;
-	"Quit")
-	    echo "User requested exit"
-	    exit
-	    ;;
-        *) echo "invalid option $REPLY";;
+        "Quit")
+            echo "User requested exit"
+            exit
+            ;;
+            *) echo "invalid option $REPLY";;
     esac
 done
+
+
 
