@@ -27,14 +27,30 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: goapp-service
+  name: goapp-service1
 spec:
   selector:
     app: goapp
+  type: LoadBalancer  
   ports:
     - protocol: TCP
-      port: 27070
-      targetPort: 27070
+      port: 8090
+      targetPort: 8090
+      nodePort: 30001
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: goapp-service2
+spec:
+  selector:
+    app: goapp
+  type: LoadBalancer  
+  ports:
+    - protocol: TCP
+      port: 7090
+      targetPort: 7090
+      nodePort: 30002
 
 
 
